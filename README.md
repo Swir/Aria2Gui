@@ -1,20 +1,39 @@
-Aria2 Ultimate PRO by Swir
+<div align="center">
 
-Aria2 Ultimate PRO is a modern, feature-rich, and blazing-fast graphical user interface (GUI) for the legendary aria2c download engine. Built with Python and CustomTkinter, it features a stunning "Cyber Neon" aesthetic while providing advanced download management capabilities.
+# 🚀 ARIA2 ULTIMATE PRO
 
---- KEY FEATURES ---
+*A modern, feature-resilient, and cyberpunk-styled GUI wrapper for aria2c*
 
-* Cyber Neon UI: A gorgeous, fully responsive dark theme built with CustomTkinter.
-* Universal Protocol Support: Seamlessly download via HTTP, HTTPS, FTP, SFTP, Magnet Links, Metalink, and local .torrent files.
-* Archive.org Scanner: Built-in tool to parse and bulk-download files directly from Archive.org item URLs.
-* Bulletproof Resuming: Advanced session saving (.aria2) ensures you never lose download progress. Easily swap expired URLs and resume exactly where you left off.
-* Bandwidth Management: Granular control over max concurrent downloads, download/upload speed limits, connections per server, and chunk sizes.
-* Auto-Retry & Resilience: Configurable network timeout and auto-retry mechanics for unstable internet connections.
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![CustomTkinter](https://img.shields.io/badge/UI-CustomTkinter-purple?style=for-the-badge)](https://github.com/TomSchimansky/CustomTkinter)
+[![License: MIT](https://img.shields.io/badge/License-MIT-success.svg?style=for-the-badge)](LICENSE)
 
---- REQUIREMENTS & INSTALLATION ---
+</div>
 
-1. Python 3.8+ installed on your system.
-2. Install the required UI library via terminal:
+---
+
+## 🎨 Overview
+
+**Aria2 Ultimate PRO** is a powerful, beautifully designed graphical user interface built to tame the raw downloading capabilities of the legendary `aria2c` engine. Say goodbye to plain gray windows—enjoy a sleek **Cyber Neon** aesthetic packed with advanced session recovery and network management tools.
+
+---
+
+## ✨ Key Features
+
+* **🎨 Cyber Neon UI:** Crafted with `CustomTkinter` for a gorgeous, responsive, and modern dark-mode experience.
+* **🌐 Universal Protocols:** Seamlessly handle HTTP, HTTPS, FTP, SFTP, Magnet Links, Metalink, and local `.torrent` files.
+* **🔍 Archive.org Scanner:** Built-in scraper that parses Archive.org items and lets you cherry-pick files directly into your download queue.
+* **🛡️ Bulletproof Resuming:** Never lose progress. Thanks to `.aria2` session handling, you can right-click any broken link, swap in a fresh URL, and resume precisely where it left off.
+* **⚙️ Complete Engine Control:** Fine-tune max connections, segments, chunk sizes, and bandwidth limits right from the settings tab.
+* **🔄 Network Resilience:** Automated retry mechanics, custom timeouts, and safeguards against sudden disconnects.
+
+---
+
+## 🛠️ Requirements & Installation
+
+1. **Python 3.8+** installed on your system.
+2. Install the required UI library via your terminal:
+   ```bash
    pip install customtkinter
 3. Download the official Aria2 Windows executable (https://github.com/aria2/aria2/releases) - aria2c.exe - and place it in the same directory as the Python script.
 
