@@ -38,11 +38,9 @@
 3.Download the official Aria2 Windows executable (aria2c.exe) and place it inside the same folder as the script.
 
 🚀 Usage
-Run the application using Python:
-Bash
+Run the application using Python: 
 python aria2_gui_downloader.py
-Bash
-python aria2_gui_downloader.py
+
 Paste your link into the main task bar (or use the Archive scanner / torrent loader).
 
 Adjust your speed limits or core settings in the Configuration tab.
@@ -52,6 +50,5 @@ Click Start Download and watch the Neon terminal in action!
 🤝 Contributing & Feedback
 Contributions, bug reports, and feature requests are always welcome! Feel free to fork the repository and submit a pull request.
 
-Gdy wkleisz to do swojego pliku README.md na GitHubie, nagłówki, odznaki (badges) i wyśrodkowany nagłówek sprawią, że strona projektu będzie wyglądać jak profesjonalne oprogramowanie open-source!
 
 Developed by Swir
