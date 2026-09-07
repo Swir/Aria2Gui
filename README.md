@@ -1,88 +1,129 @@
 <div align="center">
 
-# 🚀 ARIA2 ULTIMATE PRO
+# 🚀 ARIA2 Ultimate PRO
 
-**Modern cyber-neon desktop GUI for the `aria2c` download engine**  
-**Nowoczesny cyber-neonowy interfejs dla silnika pobierania `aria2c`**
+### Modern Cyber-Neon GUI for aria2c on Windows
+
+**HTTP • HTTPS • FTP • SFTP • Torrents • Magnet Links • Metalink • Archive.org**
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?logo=python&logoColor=white)
-![UI](https://img.shields.io/badge/UI-CustomTkinter-8A2BE2)
-![Platform](https://img.shields.io/badge/Platform-Windows-0078D4?logo=windows)
-![Author](https://img.shields.io/badge/Author-Swir-ff4fa3)
+![aria2](https://img.shields.io/badge/Engine-aria2c-00b894)
+![CustomTkinter](https://img.shields.io/badge/GUI-CustomTkinter-8A2BE2)
+![Windows](https://img.shields.io/badge/Platform-Windows-0078D6?logo=windows&logoColor=white)
+![Languages](https://img.shields.io/badge/Languages-EN%20%7C%20PL-ff4fa3)
 
 </div>
 
 ---
 
-## 🇬🇧 English
+## ⚡ About
 
-ARIA2 Ultimate PRO is a desktop download manager written in Python and built around the powerful `aria2c` engine. It combines advanced download controls with a modern Cyber Neon interface and supports common download protocols and sources.
+**ARIA2 Ultimate PRO** is a modern desktop download manager built in Python around the powerful `aria2c` engine. It gives Windows users a graphical interface for fast multi-connection downloads, torrents, magnet links, Metalink files and resumable transfer workflows.
 
-It is designed for users looking for an **aria2 GUI**, **Windows download manager**, **Python download manager**, **torrent and magnet downloader**, or a graphical frontend for `aria2c`.
+The project is designed for people searching for an **aria2 GUI**, **aria2c frontend**, **Windows download manager**, **Python download manager**, **torrent downloader**, **magnet link downloader** or a modern graphical alternative to running aria2 from the command line.
 
-### ✨ Highlights
-- HTTP / HTTPS / FTP / SFTP downloads
-- Magnet links, Metalink and `.torrent` files
-- Archive.org file scanner
-- resumable downloads using aria2 session data
-- configurable connections, segments, chunk sizes and bandwidth limits
-- automatic retries and timeout handling
-- separate English and Polish application versions
-
-### 🛠 Requirements
-- Python 3.8+
-- `customtkinter`
-- `aria2c.exe` available next to the script or in `PATH`
-
-```bash
-pip install customtkinter
-python aria2_gui_downloader_ENG.py
-```
+Two complete application variants are included: **English** and **Polish**.
 
 ---
 
-## 🇵🇱 Polski
+## ✨ Features
 
-ARIA2 Ultimate PRO to desktopowy menedżer pobierania napisany w Pythonie i oparty na wydajnym silniku `aria2c`. Program łączy zaawansowaną kontrolę pobierania z nowoczesnym interfejsem Cyber Neon.
+| Feature | Description |
+|---|---|
+| ⚡ aria2c engine | Uses the high-performance aria2 download backend |
+| 🌐 Multiple protocols | HTTP, HTTPS, FTP and SFTP |
+| 🧲 Magnet links | Open and download magnet links |
+| 🌊 Torrent support | Work with `.torrent` files |
+| 📦 Metalink | Supports Metalink download sources |
+| 🔁 Resume | Continue interrupted downloads using aria2 session data |
+| 🧵 Multi-connection | Configure connections, segments and chunk sizes |
+| 🚦 Bandwidth controls | Set transfer limits and connection parameters |
+| 🔄 Retry logic | Automatic retry and timeout handling |
+| 🗂️ Archive.org tools | Includes Archive.org file-scanning workflow |
+| 🌍 Two languages | Separate English and Polish versions |
+| 🎨 Cyber-Neon UI | Modern CustomTkinter desktop interface |
 
-Projekt może zainteresować osoby szukające **GUI dla aria2**, **menedżera pobierania Windows**, **download managera w Pythonie**, obsługi torrentów i linków Magnet oraz graficznego frontendu dla `aria2c`.
+---
 
-### ✨ Najważniejsze funkcje
-- HTTP / HTTPS / FTP / SFTP
-- linki Magnet, Metalink i pliki `.torrent`
-- skaner plików Archive.org
-- wznawianie przerwanych pobrań
-- konfiguracja połączeń, segmentów, rozmiaru bloków i limitów transferu
-- automatyczne ponawianie i obsługa timeoutów
-- osobna wersja polska i angielska
+## 🌍 Language Versions
 
-### 🛠 Wymagania
+| Language | File |
+|---|---|
+| 🇬🇧 English | `aria2_gui_downloader_ENG.py` |
+| 🇵🇱 Polski | `aria2_gui_downloader_PL.py` |
+
+---
+
+## 📋 Requirements
+
+- Windows 10 / 11
 - Python 3.8+
+- `aria2c.exe`
 - `customtkinter`
-- `aria2c.exe` obok skryptu lub dostępny w `PATH`
+
+Install the Python dependency:
 
 ```bash
 pip install customtkinter
+```
+
+Make sure `aria2c.exe` is available next to the script or in your system `PATH`.
+
+---
+
+## 📦 Installation
+
+```bash
+git clone https://github.com/Swir/Aria2Gui.git
+cd Aria2Gui
+pip install customtkinter
+```
+
+Run the English version:
+
+```bash
+python aria2_gui_downloader_ENG.py
+```
+
+Run the Polish version:
+
+```bash
 python aria2_gui_downloader_PL.py
 ```
 
 ---
 
-## 🔎 Discoverability / Keywords
-
-`aria2` · `aria2c` · `aria2 gui` · `download manager` · `python gui` · `customtkinter` · `windows downloader` · `torrent downloader` · `magnet downloader` · `metalink` · `archive.org downloader`
-
-## 📁 Repository / Repozytorium
+## 🧩 Project Structure
 
 ```text
 Aria2Gui/
-├── aria2_gui_downloader_ENG.py
-├── aria2_gui_downloader_PL.py
+├── aria2_gui_downloader_ENG.py   # English GUI
+├── aria2_gui_downloader_PL.py    # Polish GUI
 └── README.md
 ```
 
-## 👤 Author / Autor
+---
 
-Developed by **Swir** — practical tools, automation and experimental software.
+## 🔍 Discoverability
 
-> Use the software only with content you are legally allowed to download. / Korzystaj wyłącznie z treści, które masz prawo pobierać.
+`aria2 gui` • `aria2c gui windows` • `aria2 frontend` • `windows download manager` • `python download manager` • `torrent downloader gui` • `magnet downloader` • `metalink downloader` • `archive.org downloader` • `customtkinter downloader` • `multi connection downloader`
+
+---
+
+## ⚖️ Responsible Use
+
+Use the application only to download content you are authorized to access. Torrent and magnet support are general-purpose transfer technologies; users are responsible for complying with applicable law and source terms.
+
+---
+
+## 👨‍💻 Author
+
+Developed by **Swir** — [@Swir](https://github.com/Swir)
+
+<div align="center">
+
+### ⚡ aria2c power without living in the terminal
+
+⭐ **Star the repository if you find it useful!**
+
+</div>
