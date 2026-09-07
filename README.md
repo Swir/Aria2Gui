@@ -18,6 +18,8 @@
 
 ARIA2 Ultimate PRO is a desktop download manager written in Python and built around the powerful `aria2c` engine. It combines advanced download controls with a modern Cyber Neon interface and supports common download protocols and sources.
 
+It is designed for users looking for an **aria2 GUI**, **Windows download manager**, **Python download manager**, **torrent and magnet downloader**, or a graphical frontend for `aria2c`.
+
 ### ✨ Highlights
 - HTTP / HTTPS / FTP / SFTP downloads
 - Magnet links, Metalink and `.torrent` files
@@ -43,6 +45,8 @@ python aria2_gui_downloader_ENG.py
 
 ARIA2 Ultimate PRO to desktopowy menedżer pobierania napisany w Pythonie i oparty na wydajnym silniku `aria2c`. Program łączy zaawansowaną kontrolę pobierania z nowoczesnym interfejsem Cyber Neon.
 
+Projekt może zainteresować osoby szukające **GUI dla aria2**, **menedżera pobierania Windows**, **download managera w Pythonie**, obsługi torrentów i linków Magnet oraz graficznego frontendu dla `aria2c`.
+
 ### ✨ Najważniejsze funkcje
 - HTTP / HTTPS / FTP / SFTP
 - linki Magnet, Metalink i pliki `.torrent`
@@ -63,6 +67,10 @@ python aria2_gui_downloader_PL.py
 ```
 
 ---
+
+## 🔎 Discoverability / Keywords
+
+`aria2` · `aria2c` · `aria2 gui` · `download manager` · `python gui` · `customtkinter` · `windows downloader` · `torrent downloader` · `magnet downloader` · `metalink` · `archive.org downloader`
 
 ## 📁 Repository / Repozytorium
 
