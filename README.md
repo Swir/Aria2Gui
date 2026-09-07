@@ -2,53 +2,79 @@
 
 # 🚀 ARIA2 ULTIMATE PRO
 
-*A modern, feature-resilient, and cyberpunk-styled GUI wrapper for aria2c*
+**Modern cyber-neon desktop GUI for the `aria2c` download engine**  
+**Nowoczesny cyber-neonowy interfejs dla silnika pobierania `aria2c`**
 
-[![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![CustomTkinter](https://img.shields.io/badge/UI-CustomTkinter-purple?style=for-the-badge)](https://github.com/TomSchimansky/CustomTkinter)
-[![License: MIT](https://img.shields.io/badge/License-MIT-success.svg?style=for-the-badge)](LICENSE)
+![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?logo=python&logoColor=white)
+![UI](https://img.shields.io/badge/UI-CustomTkinter-8A2BE2)
+![Platform](https://img.shields.io/badge/Platform-Windows-0078D4?logo=windows)
+![Author](https://img.shields.io/badge/Author-Swir-ff4fa3)
 
 </div>
 
 ---
 
-## 🎨 Overview
+## 🇬🇧 English
 
-**Aria2 Ultimate PRO** is a powerful, beautifully designed graphical user interface built to tame the raw downloading capabilities of the legendary `aria2c` engine. Say goodbye to plain gray windows—enjoy a sleek **Cyber Neon** aesthetic packed with advanced session recovery and network management tools.
+ARIA2 Ultimate PRO is a desktop download manager written in Python and built around the powerful `aria2c` engine. It combines advanced download controls with a modern Cyber Neon interface and supports common download protocols and sources.
+
+### ✨ Highlights
+- HTTP / HTTPS / FTP / SFTP downloads
+- Magnet links, Metalink and `.torrent` files
+- Archive.org file scanner
+- resumable downloads using aria2 session data
+- configurable connections, segments, chunk sizes and bandwidth limits
+- automatic retries and timeout handling
+- separate English and Polish application versions
+
+### 🛠 Requirements
+- Python 3.8+
+- `customtkinter`
+- `aria2c.exe` available next to the script or in `PATH`
+
+```bash
+pip install customtkinter
+python aria2_gui_downloader_ENG.py
+```
 
 ---
 
-## ✨ Key Features
+## 🇵🇱 Polski
 
-* **🎨 Cyber Neon UI:** Crafted with `CustomTkinter` for a gorgeous, responsive, and modern dark-mode experience.
-* **🌐 Universal Protocols:** Seamlessly handle HTTP, HTTPS, FTP, SFTP, Magnet Links, Metalink, and local `.torrent` files.
-* **🔍 Archive.org Scanner:** Built-in scraper that parses Archive.org items and lets you cherry-pick files directly into your download queue.
-* **🛡️ Bulletproof Resuming:** Never lose progress. Thanks to `.aria2` session handling, you can right-click any broken link, swap in a fresh URL, and resume precisely where it left off.
-* **⚙️ Complete Engine Control:** Fine-tune max connections, segments, chunk sizes, and bandwidth limits right from the settings tab.
-* **🔄 Network Resilience:** Automated retry mechanics, custom timeouts, and safeguards against sudden disconnects.
+ARIA2 Ultimate PRO to desktopowy menedżer pobierania napisany w Pythonie i oparty na wydajnym silniku `aria2c`. Program łączy zaawansowaną kontrolę pobierania z nowoczesnym interfejsem Cyber Neon.
+
+### ✨ Najważniejsze funkcje
+- HTTP / HTTPS / FTP / SFTP
+- linki Magnet, Metalink i pliki `.torrent`
+- skaner plików Archive.org
+- wznawianie przerwanych pobrań
+- konfiguracja połączeń, segmentów, rozmiaru bloków i limitów transferu
+- automatyczne ponawianie i obsługa timeoutów
+- osobna wersja polska i angielska
+
+### 🛠 Wymagania
+- Python 3.8+
+- `customtkinter`
+- `aria2c.exe` obok skryptu lub dostępny w `PATH`
+
+```bash
+pip install customtkinter
+python aria2_gui_downloader_PL.py
+```
 
 ---
 
-## 🛠️ Requirements & Installation
+## 📁 Repository / Repozytorium
 
-1. **Python 3.8+** installed on your system.
-2. Install the required UI library via your terminal:
-   ```bash
-   pip install customtkinter
-3.Download the official Aria2 Windows executable (aria2c.exe) and place it inside the same folder as the script.
+```text
+Aria2Gui/
+├── aria2_gui_downloader_ENG.py
+├── aria2_gui_downloader_PL.py
+└── README.md
+```
 
-🚀 Usage
-Run the application using Python: 
-python aria2_gui_downloader.py
+## 👤 Author / Autor
 
-Paste your link into the main task bar (or use the Archive scanner / torrent loader).
+Developed by **Swir** — practical tools, automation and experimental software.
 
-Adjust your speed limits or core settings in the Configuration tab.
-
-Click Start Download and watch the Neon terminal in action!
-
-🤝 Contributing & Feedback
-Contributions, bug reports, and feature requests are always welcome! Feel free to fork the repository and submit a pull request.
-
-
-Developed by Swir
+> Use the software only with content you are legally allowed to download. / Korzystaj wyłącznie z treści, które masz prawo pobierać.
