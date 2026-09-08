@@ -61,11 +61,15 @@ def check_language(language):
         ImageGrab.grab(bbox=(x, y, x + app.winfo_width(), y + app.winfo_height())).save(captures / (language + ".png"))
         print(language + ": real GUI, four pages, two sizes, queue and Archive selection OK")
     finally:
-        for job in app.tk.call("after", "info"):
-            app.after_cancel(job)
         app.destroy()
 
 
 if __name__ == "__main__":
-    check_language("PL")
-    check_language("ENG")
+    if len(sys.argv) > 1:
+        check_language(sys.argv[1])
+    else:
+        # Each language gets its own Tcl interpreter and CTk scaling trackers.
+        import subprocess
+        for language in ("PL", "ENG"):
+            subprocess.run([sys.executable, __file__, language], check=True)
+
