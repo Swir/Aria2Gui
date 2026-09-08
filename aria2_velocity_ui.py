@@ -1,5 +1,4 @@
 """Shared, bilingual presentation layer for the existing aria2 CLI frontends."""
-import os
 import tkinter as tk
 from tkinter import ttk
 import customtkinter as ctk
@@ -21,7 +20,7 @@ class VelocityUI:
         self.configure(fg_color=self.COLORS["bg"])
         style = ttk.Style(self)
         style.theme_use("clam")
-        scale = self._get_widget_scaling()
+        scale = self._get_window_scaling()
         style.configure("Velocity.Treeview", background=self.COLORS["panel"],
                         fieldbackground=self.COLORS["panel"], foreground=self.COLORS["text_main"],
                         rowheight=round(44 * scale), borderwidth=0, relief="flat", font=("Segoe UI", 11))

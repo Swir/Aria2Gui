@@ -48,8 +48,21 @@ def check_language(language):
         app.update()
         assert app.queue_empty.winfo_ismapped()
         assert not errors, errors
+        # Capture only this test window; fixture values are not user data.
+        from PIL import ImageGrab
+        app.geometry("1000x700+0+0")
+        app.update()
+        app.lift()
+        app.after(300, app.quit)
+        app.mainloop()
+        captures = ROOT / "ui-captures"
+        captures.mkdir(exist_ok=True)
+        x, y = app.winfo_rootx(), app.winfo_rooty()
+        ImageGrab.grab(bbox=(x, y, x + app.winfo_width(), y + app.winfo_height())).save(captures / (language + ".png"))
         print(language + ": real GUI, four pages, two sizes, queue and Archive selection OK")
     finally:
+        for job in app.tk.call("after", "info"):
+            app.after_cancel(job)
         app.destroy()
 
 

@@ -18,8 +18,13 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install GUI dependency
-        run: python -m pip install -r requirements.txt
+        run: python -m pip install -r requirements.txt pillow
       - name: Check Python syntax
         run: python -m compileall -q aria2_velocity_ui.py aria2_gui_downloader_PL.py aria2_gui_downloader_ENG.py tests
       - name: Construct and check both desktop interfaces
         run: python tests/smoke_ui.py
+      - name: Save UI previews
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-ui-previews
+          path: ui-captures/*.png
