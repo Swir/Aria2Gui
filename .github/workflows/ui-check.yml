@@ -1,0 +1,30 @@
+name: Desktop UI checks
+
+on:
+  push:
+    branches: [main, codex/aria2-velocity-ui]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows-ui:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install GUI dependency
+        run: python -m pip install -r requirements.txt pillow
+      - name: Check Python syntax
+        run: python -m compileall -q aria2_velocity_ui.py aria2_gui_downloader_PL.py aria2_gui_downloader_ENG.py tests
+      - name: Construct and check both desktop interfaces
+        run: python tests/smoke_ui.py
+      - name: Save UI previews
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-ui-previews
+          path: ui-captures/*.png
