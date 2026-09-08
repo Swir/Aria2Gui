@@ -45,6 +45,20 @@ Two complete application variants are included: **English** and **Polish**.
 
 ---
 
+## Velocity interface refresh
+
+The Polish and English launchers now share `aria2_velocity_ui.py`. Keep this module beside both launchers.
+
+- Queue-first workspace with quieter graphite surfaces and cyan accents.
+- Dedicated Transfers, Archive.org, Engine Log and Settings pages.
+- Independent Archive.org URL field, keyboard selection and a consistently placed results toolbar.
+- Visible queue actions, empty state and engine controls on every page.
+- Starting a download keeps the queue visible; the full engine output remains available in Engine Log.
+
+The progress strip reflects the latest aria2 console progress message. It is not a per-file or aggregate progress tracker when several files download concurrently. Existing aria2 process, pause/resume and configuration behavior is retained.
+
+Windows: install the Python dependency using `INSTALUJ.bat`, place `aria2c.exe` beside the program (or on PATH), then run `START_PL.bat` or `START_EN.bat`. The aria2 executable is not bundled.
+
 ## 🌍 Language Versions
 
 | Language | File |
@@ -127,3 +141,4 @@ Developed by **Swir** — [@Swir](https://github.com/Swir)
 ⭐ **Star the repository if you find it useful!**
 
 </div>
+

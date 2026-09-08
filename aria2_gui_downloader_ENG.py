@@ -11,6 +11,7 @@ import urllib.request
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
 import customtkinter as ctk
+from aria2_velocity_ui import VelocityUI
 
 APP_NAME = "Aria2 Ultimate PRO by Swir"
 CONFIG_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "aria2_gui_config.json")
@@ -18,7 +19,9 @@ CONFIG_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "aria2_gu
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")
 
-class Aria2Downloader(ctk.CTk):
+class Aria2Downloader(VelocityUI, ctk.CTk):
+    UI_LANGUAGE = 'en'
+
     def __init__(self):
         super().__init__()
         self.title(APP_NAME)
@@ -76,175 +79,11 @@ class Aria2Downloader(ctk.CTk):
         self.after(1000, self.update_uptime)
         self.protocol("WM_DELETE_WINDOW", self.on_close)
 
-    def setup_ttk_styles_for_treeview(self):
-        style = ttk.Style(self)
-        try: style.theme_use("default")
-        except Exception: pass
 
-        style.configure("Treeview", 
-                        background=self.COLORS["panel"], 
-                        fieldbackground=self.COLORS["panel"], 
-                        foreground=self.COLORS["text_main"], 
-                        rowheight=35, borderwidth=0, font=("Segoe UI", 10))
-        style.map("Treeview", 
-                  background=[("selected", self.COLORS["accent_pink"])], 
-                  foreground=[("selected", "white")])
-        style.configure("Treeview.Heading", 
-                        background=self.COLORS["bg"], 
-                        foreground=self.COLORS["accent_cyan"], 
-                        font=("Segoe UI", 11, "bold"), borderwidth=0, padding=5)
 
-    def build_ui(self):
-        top_panel = ctk.CTkFrame(self, fg_color=self.COLORS["panel"], corner_radius=15)
-        top_panel.pack(side="top", fill="x", padx=20, pady=(20, 10))
-        
-        header_wrap = ctk.CTkFrame(top_panel, fg_color="transparent")
-        header_wrap.pack(fill="x", padx=20, pady=(20, 15))
-        ctk.CTkLabel(header_wrap, text="🚀 ARIA2 ULTIMATE PRO", font=("Segoe UI Black", 24), text_color=self.COLORS["accent_cyan"]).pack(side="left")
-        ctk.CTkLabel(header_wrap, textvariable=self.aria_var, font=("Segoe UI", 12), text_color=self.COLORS["text_muted"]).pack(side="right", anchor="s")
 
-        input_grid = ctk.CTkFrame(top_panel, fg_color="transparent")
-        input_grid.pack(fill="x", padx=20, pady=(0, 15))
-        input_grid.columnconfigure(1, weight=1)
 
-        ctk.CTkLabel(input_grid, text="Save to:", font=("Segoe UI", 13, "bold"), text_color=self.COLORS["text_main"]).grid(row=0, column=0, sticky="w", pady=8)
-        ctk.CTkEntry(input_grid, textvariable=self.save_var, font=("Consolas", 12), fg_color=self.COLORS["bg"], border_color=self.COLORS["accent_cyan"], border_width=1).grid(row=0, column=1, sticky="ew", padx=15, pady=8, ipady=4)
-        ctk.CTkButton(input_grid, text="📂 Browse", command=self.choose_folder, fg_color=self.COLORS["bg"], hover_color=self.COLORS["accent_pink"], border_color=self.COLORS["accent_cyan"], border_width=1).grid(row=0, column=2, padx=(0, 5))
-        ctk.CTkButton(input_grid, text="📁 Open", command=self.open_folder, fg_color=self.COLORS["bg"], hover_color=self.COLORS["accent_cyan"], border_color=self.COLORS["accent_cyan"], border_width=1).grid(row=0, column=3)
 
-        ctk.CTkLabel(input_grid, text="New task:", font=("Segoe UI", 13, "bold"), text_color=self.COLORS["text_main"]).grid(row=1, column=0, sticky="w", pady=8)
-        
-        self.input_entry = ctk.CTkEntry(input_grid, textvariable=self.input_var, placeholder_text="Paste link here (HTTP, HTTPS, FTP, Magnet, Metalink...)", font=("Consolas", 12), fg_color=self.COLORS["bg"], border_color=self.COLORS["accent_pink"], border_width=1)
-        self.input_entry.grid(row=1, column=1, sticky="ew", padx=15, pady=(8, 2), ipady=4)
-        
-        btn_frame = ctk.CTkFrame(input_grid, fg_color="transparent")
-        btn_frame.grid(row=1, column=2, columnspan=2, sticky="e")
-        ctk.CTkButton(btn_frame, text="📋 Paste", width=80, command=self.paste_url, fg_color=self.COLORS["bg"], hover_color=self.COLORS["accent_cyan"]).pack(side="left", padx=2)
-        ctk.CTkButton(btn_frame, text="➕ Add URL", width=100, command=self.add_url_to_queue, fg_color=self.COLORS["accent_pink"], hover_color="#d10068").pack(side="left", padx=2)
-        ctk.CTkButton(btn_frame, text="🧲 Add .torrent", width=120, command=self.add_torrent_to_queue, fg_color=self.COLORS["bg"], border_color=self.COLORS["accent_pink"], border_width=1, hover_color=self.COLORS["accent_pink"]).pack(side="left", padx=(10, 0))
-
-        ctk.CTkLabel(input_grid, text="💡 Supported types: HTTP, HTTPS, FTP, SFTP, Magnet Link, Metalink and local .torrent files", font=("Segoe UI", 10, "italic"), text_color=self.COLORS["text_muted"]).grid(row=2, column=1, sticky="w", padx=15, pady=(0, 5))
-
-        bottom_panel = ctk.CTkFrame(self, fg_color=self.COLORS["panel"], corner_radius=15)
-        bottom_panel.pack(side="bottom", fill="x", padx=20, pady=(10, 20))
-
-        stats_frame = ctk.CTkFrame(bottom_panel, fg_color="transparent")
-        stats_frame.pack(fill="x", padx=20, pady=(15, 5))
-        ctk.CTkLabel(stats_frame, textvariable=self.status_var, font=("Consolas", 15, "bold"), text_color=self.COLORS["success"]).pack(side="left")
-        ctk.CTkLabel(stats_frame, textvariable=self.speed_var, font=("Consolas", 15, "bold"), text_color=self.COLORS["accent_cyan"]).pack(side="right")
-
-        self.progress = ctk.CTkProgressBar(bottom_panel, progress_color=self.COLORS["success"], fg_color=self.COLORS["bg"], height=15)
-        self.progress.set(0.0)
-        self.progress.pack(fill="x", padx=20, pady=10)
-
-        substats_frame = ctk.CTkFrame(bottom_panel, fg_color="transparent")
-        substats_frame.pack(fill="x", padx=20, pady=(0, 15))
-        ctk.CTkLabel(substats_frame, textvariable=self.size_var, font=("Consolas", 11), text_color=self.COLORS["text_main"]).pack(side="left")
-        ctk.CTkLabel(substats_frame, textvariable=self.uptime_var, font=("Consolas", 11, "italic"), text_color=self.COLORS["text_muted"]).pack(side="left", padx=30)
-        ctk.CTkLabel(substats_frame, textvariable=self.eta_var, font=("Consolas", 11), text_color=self.COLORS["accent_pink"]).pack(side="right")
-
-        action_bar = ctk.CTkFrame(bottom_panel, fg_color="transparent")
-        action_bar.pack(fill="x", padx=20, pady=(0, 15))
-        
-        ctk.CTkButton(action_bar, text="▶ START DOWNLOAD", font=("Segoe UI Black", 14), fg_color=self.COLORS["accent_cyan"], text_color="#000000", hover_color="#00c8d4", command=self.start_download, height=45).pack(side="left", padx=(0, 10))
-        ctk.CTkButton(action_bar, text="⏸ Pause", font=("Segoe UI", 12, "bold"), fg_color=self.COLORS["bg"], border_width=1, border_color=self.COLORS["accent_cyan"], command=self.pause_download, height=45).pack(side="left", padx=4)
-        ctk.CTkButton(action_bar, text="⏹ Stop", font=("Segoe UI", 12, "bold"), fg_color=self.COLORS["bg"], border_width=1, border_color=self.COLORS["accent_pink"], command=self.stop_download, height=45).pack(side="left", padx=4)
-        ctk.CTkButton(action_bar, text="🗑 Clear Queue", font=("Segoe UI", 12, "bold"), fg_color="#cf0000", hover_color="#990000", command=self.clear_queue, height=45).pack(side="right")
-
-        self.tabview = ctk.CTkTabview(self, fg_color=self.COLORS["panel"], segmented_button_fg_color=self.COLORS["bg"], segmented_button_selected_color=self.COLORS["accent_cyan"], segmented_button_selected_hover_color="#00c8d4", segmented_button_unselected_color=self.COLORS["bg"], text_color=self.COLORS["text_main"])
-        self.tabview.pack(side="top", fill="both", expand=True, padx=20, pady=0)
-
-        self.tab_queue = self.tabview.add(" 📥 QUEUE ")
-        self.tab_logs = self.tabview.add(" 📜 TERMINAL ")
-        self.tab_archive = self.tabview.add(" 🔍 ARCHIVE SCANNER ")
-        self.tab_settings = self.tabview.add(" ⚙ SETTINGS ")
-
-        self.build_queue_tab()
-        self.build_logs_tab()
-        self.build_archive_tab()
-        self.build_settings_tab()
-
-    def build_queue_tab(self):
-        columns = ("type", "source")
-        self.queue_tree = ttk.Treeview(self.tab_queue, columns=columns, show="headings", selectmode="extended")
-        self.queue_tree.heading("type", text="FORMAT")
-        self.queue_tree.heading("source", text="PATH / URL")
-        self.queue_tree.column("type", width=120, anchor="center")
-        self.queue_tree.column("source", width=700, anchor="w")
-        self.queue_tree.pack(side="left", fill="both", expand=True, pady=10)
-        
-        scroll = ctk.CTkScrollbar(self.tab_queue, command=self.queue_tree.yview, fg_color="transparent", button_color=self.COLORS["bg"], button_hover_color=self.COLORS["accent_cyan"])
-        scroll.pack(side="right", fill="y", pady=10)
-        self.queue_tree.configure(yscrollcommand=scroll.set)
-        
-        self.queue_tree.bind("<Delete>", self.remove_selected_from_queue)
-        
-        self.context_menu = tk.Menu(self, tearoff=0, bg=self.COLORS["panel"], fg=self.COLORS["text_main"], activebackground=self.COLORS["accent_cyan"], activeforeground="#000", borderwidth=0)
-        self.context_menu.add_command(label="🔄 Replace expired link (Resume with new)", command=self.update_expired_link)
-        self.context_menu.add_separator()
-        self.context_menu.add_command(label="📋 Copy URL", command=self.copy_selected_url)
-        self.context_menu.add_command(label="🗑 Remove from queue (Del)", command=self.remove_selected_from_queue)
-        self.queue_tree.bind("<Button-3>", self.show_context_menu)
-
-    def build_logs_tab(self):
-        self.log = ctk.CTkTextbox(self.tab_logs, fg_color=self.COLORS["bg"], text_color=self.COLORS["accent_cyan"], font=("Consolas", 12), corner_radius=10)
-        self.log.pack(fill="both", expand=True, pady=10)
-        self.log.configure(state="disabled")
-
-    def build_archive_tab(self):
-        header_frame = ctk.CTkFrame(self.tab_archive, fg_color="transparent")
-        header_frame.pack(fill="x", pady=(0, 10))
-        ctk.CTkLabel(header_frame, text="Paste Archive.org link in the main bar, then click Scan.", font=("Segoe UI", 12)).pack(side="left")
-        ctk.CTkButton(header_frame, text="🔍 SCAN ARCHIVE.ORG", font=("Segoe UI", 12, "bold"), fg_color=self.COLORS["accent_pink"], hover_color="#d10068", command=self.scan_archive).pack(side="right")
-        
-        columns = ("select", "name", "size")
-        self.arc_tree = ttk.Treeview(self.tab_archive, columns=columns, show="headings", selectmode="extended")
-        self.arc_tree.heading("select", text="[X]")
-        self.arc_tree.heading("name", text="File name")
-        self.arc_tree.heading("size", text="Size")
-        self.arc_tree.column("select", width=60, anchor="center")
-        self.arc_tree.column("name", width=600, anchor="w")
-        self.arc_tree.column("size", width=150, anchor="e")
-        self.arc_tree.pack(side="left", fill="both", expand=True)
-        
-        scroll = ctk.CTkScrollbar(self.tab_archive, command=self.arc_tree.yview, fg_color="transparent", button_color=self.COLORS["bg"], button_hover_color=self.COLORS["accent_pink"])
-        scroll.pack(side="right", fill="y")
-        self.arc_tree.configure(yscrollcommand=scroll.set)
-        self.arc_tree.bind("<Double-1>", self.toggle_archive_selected)
-
-        ctrl = ctk.CTkFrame(self.tab_archive, fg_color="transparent")
-        ctrl.pack(fill="x", pady=(15, 0))
-        ctk.CTkButton(ctrl, text="☑ Select All", command=lambda: self.set_all_archive(True), fg_color=self.COLORS["bg"], border_color=self.COLORS["accent_cyan"], border_width=1).pack(side="left", padx=5)
-        ctk.CTkButton(ctrl, text="☐ Deselect All", command=lambda: self.set_all_archive(False), fg_color=self.COLORS["bg"], border_color=self.COLORS["accent_pink"], border_width=1).pack(side="left")
-        ctk.CTkLabel(ctrl, text="💡 Selected files instantly jump to the Download Queue!", font=("Segoe UI", 11, "italic"), text_color=self.COLORS["accent_cyan"]).pack(side="right")
-
-    def build_settings_tab(self):
-        f = ctk.CTkScrollableFrame(self.tab_settings, fg_color="transparent")
-        f.pack(fill="both", expand=True)
-
-        ctk.CTkLabel(f, text="⚡ CORE DOWNLOAD OPTIONS", font=("Segoe UI Black", 14), text_color=self.COLORS["accent_cyan"]).grid(row=0, column=0, columnspan=2, sticky="w", pady=(10, 15))
-        ctk.CTkLabel(f, text="Max connections per server (-x):").grid(row=1, column=0, sticky="w", pady=10)
-        ctk.CTkComboBox(f, variable=self.connections_var, values=["1", "2", "4", "8", "16", "32", "64"], fg_color=self.COLORS["bg"], border_color=self.COLORS["accent_cyan"]).grid(row=1, column=1, sticky="w", padx=20)
-        ctk.CTkLabel(f, text="Number of file segments (-s):").grid(row=2, column=0, sticky="w", pady=10)
-        ctk.CTkComboBox(f, variable=self.segments_var, values=["1", "2", "4", "8", "16", "32", "64"], fg_color=self.COLORS["bg"], border_color=self.COLORS["accent_cyan"]).grid(row=2, column=1, sticky="w", padx=20)
-        ctk.CTkLabel(f, text="Chunk size (-k):").grid(row=3, column=0, sticky="w", pady=10)
-        ctk.CTkComboBox(f, variable=self.chunk_var, values=["1M", "2M", "4M", "8M", "16M", "32M", "64M"], fg_color=self.COLORS["bg"], border_color=self.COLORS["accent_cyan"]).grid(row=3, column=1, sticky="w", padx=20)
-
-        ctk.CTkLabel(f, text="🛡️ SECURITY & RESUMING (ANTI-DISCONNECT)", font=("Segoe UI Black", 14), text_color=self.COLORS["success"]).grid(row=4, column=0, columnspan=2, sticky="w", pady=(35, 15))
-        ctk.CTkCheckBox(f, text="Always append to file and resume session (.aria2)", variable=self.auto_resume_var, fg_color=self.COLORS["success"], hover_color="#2eb810").grid(row=5, column=0, columnspan=2, sticky="w", pady=8)
-        ctk.CTkCheckBox(f, text="Auto-retry on network errors and timeouts", variable=self.auto_retry_var, fg_color=self.COLORS["success"], hover_color="#2eb810").grid(row=6, column=0, columnspan=2, sticky="w", pady=8)
-        ctk.CTkLabel(f, text="Max retry attempts:").grid(row=7, column=0, sticky="w", pady=10)
-        ctk.CTkComboBox(f, variable=self.max_tries_var, values=["5", "10", "20", "50", "0 (infinite)"], fg_color=self.COLORS["bg"], border_color=self.COLORS["success"]).grid(row=7, column=1, sticky="w", padx=20)
-        ctk.CTkLabel(f, text="Retry wait time (sec.):").grid(row=8, column=0, sticky="w", pady=10)
-        ctk.CTkComboBox(f, variable=self.retry_wait_var, values=["2", "5", "10", "15", "30"], fg_color=self.COLORS["bg"], border_color=self.COLORS["success"]).grid(row=8, column=1, sticky="w", padx=20)
-
-        ctk.CTkLabel(f, text="🌐 BANDWIDTH LIMITS & MANAGEMENT", font=("Segoe UI Black", 14), text_color=self.COLORS["accent_pink"]).grid(row=9, column=0, columnspan=2, sticky="w", pady=(35, 15))
-        ctk.CTkLabel(f, text="Concurrent downloads (-j):").grid(row=10, column=0, sticky="w", pady=10)
-        ctk.CTkComboBox(f, variable=self.max_concurrent_var, values=["1", "2", "3", "5", "10", "20"], fg_color=self.COLORS["bg"], border_color=self.COLORS["accent_pink"]).grid(row=10, column=1, sticky="w", padx=20)
-        ctk.CTkLabel(f, text="Max Download Limit (e.g. 5M, 0=none):").grid(row=11, column=0, sticky="w", pady=10)
-        ctk.CTkComboBox(f, variable=self.dl_limit_var, values=["0", "500K", "1M", "2M", "5M", "10M"], fg_color=self.COLORS["bg"], border_color=self.COLORS["accent_pink"]).grid(row=11, column=1, sticky="w", padx=20)
-        ctk.CTkLabel(f, text="Max Upload Limit (Torrent):").grid(row=12, column=0, sticky="w", pady=10)
-        ctk.CTkComboBox(f, variable=self.ul_limit_var, values=["0", "100K", "500K", "1M", "5M"], fg_color=self.COLORS["bg"], border_color=self.COLORS["accent_pink"]).grid(row=12, column=1, sticky="w", padx=20)
 
     def show_context_menu(self, event):
         item = self.queue_tree.identify_row(event.y)
@@ -436,7 +275,7 @@ class Aria2Downloader(ctk.CTk):
         self.session_start_time = time.time()
         self.status_var.set("DOWNLOAD IN PROGRESS...")
         self.title(f"{APP_NAME} - Downloading...")
-        self.tabview.set(" 📜 TERMINAL ")
+        self.show_page("queue")
 
         threading.Thread(target=self._download_worker, args=(folder,), daemon=True).start()
 
