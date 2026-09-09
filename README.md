@@ -1,56 +1,73 @@
 <div align="center">
 
-# 🚀 ARIA2 Ultimate PRO
+# ⚡ ARIA2 Ultimate PRO
 
-### Modern Cyber-Neon GUI for aria2c on Windows
+### Cyber-neon desktop GUI for `aria2c` on Windows
 
 **HTTP • HTTPS • FTP • SFTP • Torrents • Magnet Links • Metalink • Archive.org**
 
-![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?logo=python&logoColor=white)
-![aria2](https://img.shields.io/badge/Engine-aria2c-00b894)
-![CustomTkinter](https://img.shields.io/badge/GUI-CustomTkinter-8A2BE2)
-![Windows](https://img.shields.io/badge/Platform-Windows-0078D6?logo=windows&logoColor=white)
-![Languages](https://img.shields.io/badge/Languages-EN%20%7C%20PL-ff4fa3)
+![Python](https://img.shields.io/badge/Python-3.8%2B-0D1117?style=for-the-badge&logo=python&logoColor=00A6FF)
+![aria2](https://img.shields.io/badge/ENGINE-aria2c-0D1117?style=for-the-badge&logo=gnu&logoColor=00A6FF)
+![GUI](https://img.shields.io/badge/GUI-CustomTkinter-0D1117?style=for-the-badge&logo=python&logoColor=00A6FF)
+![Windows](https://img.shields.io/badge/WINDOWS-10%20%2F%2011-0D1117?style=for-the-badge&logo=windows11&logoColor=00A6FF)
+
+[![Profile](https://img.shields.io/badge/Author-Swir-0088FF?style=flat-square&logo=github)](https://github.com/Swir)
+[![Stars](https://img.shields.io/github/stars/Swir/Aria2Gui?style=flat-square&color=0088FF)](https://github.com/Swir/Aria2Gui/stargazers)
 
 </div>
 
 ---
 
-## ⚡ About
+## 🚀 What is it?
 
-**ARIA2 Ultimate PRO** is a modern desktop download manager built in Python around the powerful `aria2c` engine. It gives Windows users a graphical interface for fast multi-connection downloads, torrents, magnet links, Metalink files and resumable transfer workflows.
+**ARIA2 Ultimate PRO** gives the `aria2c` command-line engine a modern Windows interface. It is built for users who want fast multi-connection downloads without manually composing long terminal commands.
 
-The project is designed for people searching for an **aria2 GUI**, **aria2c frontend**, **Windows download manager**, **Python download manager**, **torrent downloader**, **magnet link downloader** or a modern graphical alternative to running aria2 from the command line.
-
-Two complete application variants are included: **English** and **Polish**.
+The app includes separate **English** and **Polish** versions and stores its own local configuration.
 
 ---
 
-## ✨ Features
+## ✨ Highlights
 
-| Feature | Description |
+| Feature | What it does |
 |---|---|
-| ⚡ aria2c engine | Uses the high-performance aria2 download backend |
+| ⚡ Multi-connection downloads | Configure connections, segments and chunk size |
+| 🧲 Magnet + torrent support | Pass magnet links and `.torrent` jobs to aria2c |
 | 🌐 Multiple protocols | HTTP, HTTPS, FTP and SFTP |
-| 🧲 Magnet links | Open and download magnet links |
-| 🌊 Torrent support | Work with `.torrent` files |
-| 📦 Metalink | Supports Metalink download sources |
-| 🔁 Resume | Continue interrupted downloads using aria2 session data |
-| 🧵 Multi-connection | Configure connections, segments and chunk sizes |
-| 🚦 Bandwidth controls | Set transfer limits and connection parameters |
-| 🔄 Retry logic | Automatic retry and timeout handling |
-| 🗂️ Archive.org tools | Includes Archive.org file-scanning workflow |
-| 🌍 Two languages | Separate English and Polish versions |
-| 🎨 Cyber-Neon UI | Modern CustomTkinter desktop interface |
+| 📦 Metalink | Work with Metalink download sources |
+| 🔁 Resume + retry | Continue interrupted jobs and retry failed transfers |
+| 🚦 Transfer limits | Configure download/upload limits |
+| 🗂️ Archive.org workflow | Scan Archive.org pages and prepare downloadable links |
+| 📊 Live status | Speed, ETA, size and session information |
+| 🌍 EN / PL | Separate English and Polish builds |
+| 🎨 Cyber-neon UI | Dark CustomTkinter interface |
 
 ---
 
-## 🌍 Language Versions
+## ⚙️ Quick start
 
-| Language | File |
-|---|---|
-| 🇬🇧 English | `aria2_gui_downloader_ENG.py` |
-| 🇵🇱 Polski | `aria2_gui_downloader_PL.py` |
+### 1. Install Python dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Install `aria2c`
+
+Place `aria2c.exe` next to the script or add it to your Windows `PATH`.
+
+### 3. Run the app
+
+English:
+
+```bash
+python aria2_gui_downloader_ENG.py
+```
+
+Polski:
+
+```bash
+python aria2_gui_downloader_PL.py
+```
 
 ---
 
@@ -61,69 +78,46 @@ Two complete application variants are included: **English** and **Polish**.
 - `aria2c.exe`
 - `customtkinter`
 
-Install the Python dependency:
-
-```bash
-pip install customtkinter
-```
-
-Make sure `aria2c.exe` is available next to the script or in your system `PATH`.
-
----
-
-## 📦 Installation
+Clone:
 
 ```bash
 git clone https://github.com/Swir/Aria2Gui.git
 cd Aria2Gui
-pip install customtkinter
-```
-
-Run the English version:
-
-```bash
-python aria2_gui_downloader_ENG.py
-```
-
-Run the Polish version:
-
-```bash
-python aria2_gui_downloader_PL.py
+pip install -r requirements.txt
 ```
 
 ---
 
-## 🧩 Project Structure
+## 🧩 Project files
 
 ```text
 Aria2Gui/
-├── aria2_gui_downloader_ENG.py   # English GUI
-├── aria2_gui_downloader_PL.py    # Polish GUI
+├── aria2_gui_downloader_ENG.py
+├── aria2_gui_downloader_PL.py
+├── requirements.txt
 └── README.md
 ```
 
 ---
 
-## 🔍 Discoverability
+## 🔎 Search keywords
 
-`aria2 gui` • `aria2c gui windows` • `aria2 frontend` • `windows download manager` • `python download manager` • `torrent downloader gui` • `magnet downloader` • `metalink downloader` • `archive.org downloader` • `customtkinter downloader` • `multi connection downloader`
-
----
-
-## ⚖️ Responsible Use
-
-Use the application only to download content you are authorized to access. Torrent and magnet support are general-purpose transfer technologies; users are responsible for complying with applicable law and source terms.
+`aria2 gui` • `aria2c gui windows` • `aria2 frontend` • `windows download manager` • `python download manager` • `torrent downloader gui` • `magnet downloader` • `archive.org downloader` • `customtkinter downloader`
 
 ---
 
-## 👨‍💻 Author
+## ⚖️ Responsible use
 
-Developed by **Swir** — [@Swir](https://github.com/Swir)
+Use this tool only to download content you are authorized to access. Torrent and magnet support are general-purpose transfer technologies; the user is responsible for complying with applicable law and source terms.
+
+---
 
 <div align="center">
 
-### ⚡ aria2c power without living in the terminal
+### `aria2c power without living in the terminal`
 
-⭐ **Star the repository if you find it useful!**
+⭐ **If ARIA2 Ultimate PRO is useful to you, leave a star — it helps the project get discovered.**
+
+[**← Visit SWIR profile**](https://github.com/Swir) · [**Browse all projects →**](https://github.com/Swir?tab=repositories)
 
 </div>
