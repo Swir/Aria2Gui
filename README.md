@@ -16,6 +16,12 @@
 
 </div>
 
+## 📸 Screenshot
+
+![Aria2Gui application screenshot](docs/screenshots/application.jpg)
+
+Initial downloader window on Windows. The capture was taken before installing the aria2c engine.
+
 ---
 
 ## 🚀 What is it?
